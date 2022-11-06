@@ -5,6 +5,15 @@ require('chromedriver')
 
 const driver = new Builder().withCapabilities(Capabilities.chrome()).build()
 
+// const displayFunction = async () => {
+//     const drawButton = await driver.findElement(By.id('draw'))
+//     await drawButton.click()
+//     const idDiv = await driver.findElement(By.id('choices'))
+//     const idDivDisplayed = await idDiv.isDisplayed()
+//     expect(idDivDisplayed).toBe(true)
+// }
+
+
 beforeEach(async () => {
     driver.get('http://localhost:3000/')
 })
@@ -14,6 +23,7 @@ afterAll(async () => {
 })
 
 test('Title shows up when page loads', async () => {
+    
     const title = await driver.findElement(By.id('title'))
     const displayed = await title.isDisplayed()
     expect(displayed).toBe(true)
@@ -21,6 +31,8 @@ test('Title shows up when page loads', async () => {
 
 
 test('Draw button displays the div with id = “choices”', async () => {
+    //   displayFunction()
+
     const drawButton = await driver.findElement(By.id('draw'))
     await drawButton.click()
     const idDiv = await driver.findElement(By.id('choices'))
